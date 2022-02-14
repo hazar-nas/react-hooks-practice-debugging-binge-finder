@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react'
 
-function tvShow() {
+function TvShow(props) {
+  // console.log(props)
   return (
     <div>
       <br />
-      <img src={props.image.medium} onClick={props.selectShow} alt="" />
+      <img src={props.show.image.medium} onClick={props.selectShow} alt='' />
     </div>
-  );
+  )
 }
 
-export default tvShow;
+export default TvShow
