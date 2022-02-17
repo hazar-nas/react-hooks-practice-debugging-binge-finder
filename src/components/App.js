@@ -23,6 +23,7 @@ function App() {
   function handleSearch(e) {
     setSearchTerm(e.target.value.toLowerCase())
   }
+  // console.log(searchTerm)
 
   function handleFilter(e) {
     e.target.value === 'No Filter'
@@ -38,6 +39,7 @@ function App() {
   }
 
   let displayShows = shows
+
   if (filterByRating) {
     displayShows = displayShows.filter((s) => {
       // console.log(s)
@@ -57,7 +59,7 @@ function App() {
           {!!selectedShow ? (
             <SelectedShowContainer
               selectedShow={selectedShow}
-              allEpisodes={episodes}
+              episodes={episodes}
             />
           ) : (
             <div />
