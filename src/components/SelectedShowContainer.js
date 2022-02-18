@@ -3,11 +3,16 @@ import Episode from './Episode'
 
 function SelectedShowContainer(props) {
   const [selectedSeason, setSelectedSeason] = useState(1)
-  const { selectedShow } = props
 
+  // console.log(props.episodes)
+  // in app js using selectShow func we got episodes but since there are
+  // multiple episodes with the same season we need to get the seasons values once
+  // ,thus using unique function.
+  // console.log(!!props.episodes)
   function mapSeasons() {
     if (!!props.episodes) {
       let seasons = unique(props.episodes.map((e) => e.season))
+      // console.log(seasons)
 
       return seasons.map((s) => {
         return (
@@ -19,6 +24,7 @@ function SelectedShowContainer(props) {
     }
   }
 
+  // console.log(props.episodes)
   function mapEpisodes() {
     return props.episodes
       .filter((e) => e.season === parseInt(selectedSeason))
@@ -31,6 +37,7 @@ function SelectedShowContainer(props) {
     setSelectedSeason(e.target.value)
   }
 
+  const { selectedShow } = props
   return (
     <div style={{ position: 'static' }}>
       <h2>{selectedShow.name}</h2>
@@ -61,10 +68,9 @@ export default SelectedShowContainer
 
 function unique(array) {
   const arr = []
-
   for (let i = 0; i < array.length; i++) {
-    if (!arr.includes(arr[i])) {
-      arr.push(arr[i])
+    if (!arr.includes(array[i])) {
+      arr.push(array[i])
     }
   }
   return arr

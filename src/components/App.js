@@ -43,7 +43,7 @@ function App() {
   if (filterByRating) {
     displayShows = displayShows.filter((s) => {
       // console.log(s)
-      return s.rating.average >= Number(filterByRating)
+      return s.rating.average >= parseInt(filterByRating)
     })
   }
 
@@ -55,17 +55,16 @@ function App() {
         searchTerm={searchTerm}
       />
       <Grid celled>
-        <Grid.Column width={5}>
-          {!!selectedShow ? (
+        {!!selectedShow && (
+          <Grid.Column width={4}>
             <SelectedShowContainer
               selectedShow={selectedShow}
               episodes={episodes}
             />
-          ) : (
-            <div />
-          )}
-        </Grid.Column>
-        <Grid.Column width={11}>
+          </Grid.Column>
+        )}
+
+        <Grid.Column width={!!selectedShow ? 12 : 16}>
           <TVShowList
             shows={displayShows}
             selectShow={selectShow}
